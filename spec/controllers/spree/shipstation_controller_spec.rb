@@ -30,7 +30,7 @@ describe Spree::ShipstationController, type: :controller do
       before { get :export, params: params }
 
       it 'renders successfully', :aggregate_failures do
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(response).to render_template(:export)
         expect(assigns(:shipments)).to match_array([shipments])
       end
@@ -76,7 +76,7 @@ describe Spree::ShipstationController, type: :controller do
         end
 
         it 'responds with success' do
-          expect(response).to be_success
+          expect(response).to be_successful
         end
       end
 

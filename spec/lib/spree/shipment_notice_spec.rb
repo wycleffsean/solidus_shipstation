@@ -93,7 +93,7 @@ describe Spree::ShipmentNotice do
           expect(shipment).to receive(:update_attribute).with(:tracking, tracking_number)
           expect(shipment).to receive_message_chain(:reload, :ship!)
           expect(shipment).to receive(:touch).with(:shipped_at)
-          expect(order).to receive(:update!)
+          expect(order).to receive(:recalculate)
         end
 
         it 'returns true' do
