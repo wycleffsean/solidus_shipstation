@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'rspec-rails', '~> 3'
   s.add_development_dependency 'sass-rails'
-  s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'sqlite3', '~> 1.3.6'
   s.add_development_dependency 'rspec-xsd'
   s.add_development_dependency 'simplecov'
 end
