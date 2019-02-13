@@ -17,8 +17,8 @@ describe Spree::ShipstationController, type: :controller do
 
     describe '#export' do
       let(:schema) { 'spec/fixtures/shipstation_xml_schema.xsd' }
-      let(:order) { create(:order, state: 'complete', completed_at: Time.now.utc) }
-      let!(:shipments) { create(:shipment, state: 'ready', order: order) }
+      let(:order) { create(:order_ready_to_ship) }
+      let!(:shipments) { order.shipments.to_a }
       let(:params) do
         {
           start_date: 1.day.ago.strftime('%m/%d/%Y %H:%M'),
@@ -32,7 +32,7 @@ describe Spree::ShipstationController, type: :controller do
       it 'renders successfully', :aggregate_failures do
         expect(response).to be_successful
         expect(response).to render_template(:export)
-        expect(assigns(:shipments)).to match_array([shipments])
+        expect(assigns(:shipments)).to match_array(shipments)
       end
 
       it 'generates valid ShipStation formatted xml' do
